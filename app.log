@@ -1,0 +1,8 @@
+2025-07-27 21:49:28,845 INFO: Loading model from fraud_pipeline.joblib [in C:\Users\parve\OneDrive\Desktop\2025 Projects\FMDS\app.py:33]
+2025-07-27 21:49:31,235 INFO: Model loaded successfully [in C:\Users\parve\OneDrive\Desktop\2025 Projects\FMDS\app.py:35]
+2025-07-27 21:49:31,247 INFO: Model test prediction: 0 [in C:\Users\parve\OneDrive\Desktop\2025 Projects\FMDS\app.py:39]
+2025-07-27 21:49:31,257 INFO: Starting production server [in C:\Users\parve\OneDrive\Desktop\2025 Projects\FMDS\app.py:114]
+2025-07-27 21:49:45,787 INFO: Loading model from fraud_pipeline.joblib [in C:\Users\parve\OneDrive\Desktop\2025 Projects\FMDS\app.py:33]
+2025-07-27 21:49:47,815 INFO: Model loaded successfully [in C:\Users\parve\OneDrive\Desktop\2025 Projects\FMDS\app.py:35]
+2025-07-27 21:49:47,833 INFO: Model test prediction: 0 [in C:\Users\parve\OneDrive\Desktop\2025 Projects\FMDS\app.py:39]
+2025-07-27 21:49:47,845 INFO: Starting production server [in C:\Users\parve\OneDrive\Desktop\2025 Projects\FMDS\app.py:114]
