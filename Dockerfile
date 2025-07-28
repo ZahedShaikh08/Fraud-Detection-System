@@ -14,6 +14,9 @@ COPY requirements.txt .
 # Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Install Gunicorn for serving the app
+RUN pip install --no-cache-dir gunicorn
+
 # Copy the rest of your code
 COPY . .
 
