@@ -1,0 +1,14 @@
+__pycache__/
+.dockerignore
+.gitignore
+.git/
+.vscode/
+datasets/
+templates/
+static/
+README.md
+.idea/
+.vs/
+venv/
+dataset/
+*.joblib
