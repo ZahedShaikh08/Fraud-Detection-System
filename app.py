@@ -3,6 +3,7 @@ from flask_cors import CORS
 import joblib
 import os
 import logging
+import requests
 
 app = Flask(__name__, static_folder="static", template_folder="templates")
 CORS(app)
