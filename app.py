@@ -12,24 +12,24 @@ CORS(app)
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger('FraudDetectionAPI')
 
-# Model configuration
-MODEL_URL = "https://drive.google.com/uc?export=download&id=YOUR_MODEL_ID"  # REPLACE WITH YOUR ACTUAL URL
-MODEL_PATH = "fraud_pipeline.joblib"
+# # Model configuration
+# MODEL_URL = "https://drive.google.com/uc?export=download&id=YOUR_MODEL_ID"  # REPLACE WITH YOUR ACTUAL URL
+# MODEL_PATH = "fraud_pipeline.joblib"
 
-# Download model if missing
-if not os.path.exists(MODEL_PATH):
-    logger.info("Downloading model from cloud storage...")
-    try:
-        urlretrieve(MODEL_URL, MODEL_PATH)
-        logger.info("Model downloaded successfully")
-    except Exception as e:
-        logger.error(f"Model download failed: {str(e)}")
-        raise RuntimeError("Model unavailable") from e
+# # Download model if missing
+# if not os.path.exists(MODEL_PATH):
+#     logger.info("Downloading model from cloud storage...")
+#     try:
+#         urlretrieve(MODEL_URL, MODEL_PATH)
+#         logger.info("Model downloaded successfully")
+#     except Exception as e:
+#         logger.error(f"Model download failed: {str(e)}")
+#         raise RuntimeError("Model unavailable") from e
 
 # Load model
 try:
     logger.info("Loading fraud detection model...")
-    pipeline = joblib.load(MODEL_PATH)
+    pipeline = joblib.load("fraud_pipeline.joblib")
     logger.info("Model loaded successfully")
 except Exception as e:
     logger.exception("Failed to load model")
