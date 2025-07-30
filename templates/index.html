@@ -33,26 +33,15 @@
       margin: 0;
       padding: 0;
       min-height: 100vh;
-      background: linear-gradient(135deg, var(--darker), var(--dark));
-      background-image: url("{{ url_for('static', filename='bg.jpeg') }}");
+      background: 
+        linear-gradient(rgba(10, 10, 10, 0.9), rgba(10, 10, 10, 0.9)),
+        url("{{ url_for('static', filename='bg.jpeg') }}");
       background-size: cover;
       background-position: center center;
       background-attachment: fixed;
+      background-repeat: no-repeat;
       color: var(--light);
       line-height: 1.6;
-      position: relative;
-    }
-
-    /* Move pseudo-element AFTER body styles */
-    body::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(10, 10, 10, 0.85);
-      z-index: -1;
     }
 
     /* Header Styles */
@@ -74,7 +63,13 @@
       width: 100%;
       height: 100%;
       background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      animation: shimmer 3s infinite;
       pointer-events: none;
+    }
+
+    @keyframes shimmer {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
     }
 
     .header h1 {
@@ -106,8 +101,6 @@
       padding: 0 20px;
       gap: 30px;
     }
-
-    /* REMOVED UNUSED PROFILE SECTION STYLES */
 
     /* Detection Container */
     .detection-container {
@@ -328,16 +321,6 @@
       font-size: 0.95rem;
     }
 
-    /* Footer */
-    .footer {
-      text-align: center;
-      padding: 25px;
-      margin-top: 40px;
-      border-top: 1px solid rgba(61, 82, 160, 0.3);
-      color: #8a8a8a;
-      font-size: 0.9rem;
-    }
-
     /* Responsive Design */
     @media (max-width: 768px) {
       .header h1 {
@@ -425,11 +408,6 @@
     </section>
   </div>
 
-  <footer class="footer">
-    <p>© 2025 FraudGuard | Fraud Detection System. All rights reserved.</p>
-    <p>Created by Zahed Rafik Shaikh</p>
-  </footer>
-
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const messageForm = document.getElementById('messageForm');
@@ -447,7 +425,7 @@
           <p class="result-text">Ready to analyze</p>
           <p class="result-description">Enter a message and click "Analyze" to detect potential fraud</p>
         `;
-        resultDiv.style.background = 'rgba(38, 38, 38, 0.5)';
+        resultDiv.className = 'result-container';
       }
       
       // Clear button event
@@ -466,7 +444,7 @@
             <p class="result-text">Please enter a message</p>
             <p class="result-description">The input field cannot be empty</p>
           `;
-          resultDiv.style.background = 'rgba(244, 67, 54, 0.1)';
+          resultDiv.className = 'result-container';
           return;
         }
         
@@ -502,9 +480,7 @@
                   : 'This message appears to be legitimate. No fraud detected.'}
               </p>
             `;
-            resultDiv.style.background = isFraud 
-              ? 'rgba(244, 67, 54, 0.1)' 
-              : 'rgba(76, 175, 80, 0.1)';
+            resultDiv.className = `result-container ${isFraud ? 'fraudulent-bg' : 'non-fraudulent-bg'}`;
           } else {
             resultDiv.innerHTML = `
               <div class="result-icon">
@@ -513,7 +489,7 @@
               <p class="result-text">Error: ${data.error || 'Unknown error'}</p>
               <p class="result-description">Please try again or contact support</p>
             `;
-            resultDiv.style.background = 'rgba(244, 67, 54, 0.1)';
+            resultDiv.className = 'result-container';
           }
         } catch (err) {
           resultDiv.innerHTML = `
@@ -523,7 +499,7 @@
             <p class="result-text">Request failed</p>
             <p class="result-description">${err.message || 'Network error'}</p>
           `;
-          resultDiv.style.background = 'rgba(244, 67, 54, 0.1)';
+          resultDiv.className = 'result-container';
         } finally {
           resultDiv.classList.remove('loading');
         }
