@@ -4,8 +4,6 @@ __pycache__/
 .git/
 .vscode/
 datasets/
-templates/
-static/
 README.md
 .idea/
 .vs/
