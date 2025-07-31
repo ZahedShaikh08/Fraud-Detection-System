@@ -8,5 +8,4 @@ README.md
 .idea/
 .vs/
 venv/
-dataset/
 *.joblib
